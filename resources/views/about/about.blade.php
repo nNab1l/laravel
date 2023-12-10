@@ -13,20 +13,6 @@
         <link href="/dist/app.css" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <header class="header">
-            <nav>
-                <ul>
-                    <li>Home</li>
-                    <li>Projecten</li>
-                    <li>
-                    <a href="{ {route('about')}}">About</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <section></section>
-        <footer>
-            2023 copyright
-        </footer>
+       <h1>about</h1>
     </body>
 </html>
