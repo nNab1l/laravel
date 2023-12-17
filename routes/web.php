@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/about', [ \App\Http\Controllers\AboutController::class, 'index'])->name('about');
+Route::get('/projects/add', [ ProjectController::class, 'add' ])->name('project.add');
+
+
