@@ -21,6 +21,7 @@
                     <li>
                     <a href="{ {route('about')}}">About</a>
                     </li>
+                    <li> <a href="{{route('model.show', $model)}}">Bekijk dit item</a></li>
                 </ul>
             </nav>
         </header>

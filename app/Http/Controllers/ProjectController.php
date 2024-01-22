@@ -12,4 +12,10 @@ class ProjectController extends Controller
         $model->field_one = 'mijn data';
         $model->save();
     }
+
+    public function show(Model $model): string
+    {
+        return view('model.show', ['model'=>$model]);
+    }
 }
+
