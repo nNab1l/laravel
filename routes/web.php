@@ -22,4 +22,20 @@ Route::get('/about', [ \App\Http\Controllers\AboutController::class, 'index'])->
 Route::get('/projects/add', [ ProjectController::class, 'add' ])->name('project.add');
 Route::get('/project/{project}', [ProjectController::class, 'show'])->name('project.show');
 
+Route::prefix('/dashboard')
+     ->middleware(['auth', 'verified'])
+     ->group(function () {
+         Route::get(
+             '/',
+             function () {
+                 return view('dashboard');
+             })->name('dashboard');
+
+         Route::resources(
+             [
+                 'project' => ProjectAdminController::class,
+             ]
+         );
+     });
+
 
