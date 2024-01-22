@@ -66,6 +66,8 @@ class project extends Controller
 
     public function index()
     {
-        return 'Dit is mijn index';
+        $projects = Project::paginate(2);
+        return view('dashboard.projects.index', ['projects'=>$projects]);
+
     }
 }
