@@ -26,6 +26,11 @@
                         <a href="{{$item->title}}">{{ $item->title }}</a><br>
                     @endforeach
                     {{$items->links()}}
+                    
+                    @auth
+                        <a href="{{ route('ROUTE-NAAR-CREATE') }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">Nieuw Project</a>
+                    @endauth
+
 
                 </ul>
             </nav>
