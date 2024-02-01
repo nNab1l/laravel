@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProjectAdminController;
+use App\Models\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class project extends Controller
+class ProjectAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,21 +25,30 @@ class project extends Controller
      */
     public function store(Request $request)
     {
-        dump( $request->all() );
+        $valid_data = $request->validate([
+            'title'      => 'required|unique:posts|max:255',
+            'onderdeel'  => 'required',
+        ]);
+        
+        dd($valid);
+
+        $item = new Model( $validData );
+        $item->save();
+        return redirect( route('project.show', $project->id ) );
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(ProjectAdminController $projectAdminController)
+    public function show(Project $project)
     {
-        //
+        return view('project.show', ['project' => $project]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProjectAdminController $projectAdminController)
+    public function edit(Project $project)
     {
         //
     }
@@ -51,7 +56,7 @@ class project extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProjectAdminController $projectAdminController)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -59,7 +64,7 @@ class project extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProjectAdminController $projectAdminController)
+    public function destroy(Project $project)
     {
         //
     }

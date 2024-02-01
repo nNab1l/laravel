@@ -13,22 +13,10 @@
         <link href="/dist/app.css" rel="stylesheet">
     </head>
     <body class="antialiased">
-        <header class="header">
-            <nav>
-                <ul>
-                    <li>Dashboard</li>
-                    <li>
-                     <a href="{{route('project.index')}}">Projecten</a>
-                    </li>
-                    <li>
-                    <a href="{{route('about')}}">About</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <section></section>
-        <footer>
-            2023 copyright
-        </footer>
+       <div>
+        <h2>{{$project->title}}</h2>
+        ID: {{$project->id}}
+        <em>{{$project->intro}}</em>
+       </div>
     </body>
 </html>

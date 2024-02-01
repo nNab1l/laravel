@@ -17,25 +17,22 @@
             <nav>
                 <ul>
                     <li>Home</li>
-                    <li>Projecten</li>
                     <li>
-                    <a href="{ {route('about')}}">About</a>
+                    <a href="{{route('about')}}">About</a>
                     </li>
-                    <li> <a href="{{route('model.show', $model)}}">Bekijk dit item</a></li>
-                    @foreach($items as $item)
-                        <a href="{{$item->title}}">{{ $item->title }}</a><br>
-                    @endforeach
-                    {{$items->links()}}
-                    
-                    @auth
-                        <a href="{{ route('ROUTE-NAAR-CREATE') }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">Nieuw Project</a>
-                    @endauth
-
-
+                    <li> <a href="{{route('project.index')}}">projecten</a></li>
                 </ul>
             </nav>
         </header>
-        <section></section>
+        <section>
+        @foreach($projects as $project)
+                    <a href="{{ route('project.show', $project) }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">test</a>
+                        @auth
+                        <a href="{{ route('project.edit', $project) }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">Bewerk</a>
+                        @endauth
+                    @endforeach
+        {{$projects->links()}}
+        </section>
         <footer>
             2023 copyright
         </footer>
