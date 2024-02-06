@@ -15,27 +15,39 @@ class ProjectAdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        return view('dashboard.projects.create');
+
+        dd('boe');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $valid_data = $request->validate([
-            'title'      => 'required|unique:posts|max:255',
-            'onderdeel'  => 'required',
-        ]);
-        
-        dd($valid);
+    public function store(Request $request){
+    $data = $request->validate([
+        'titel' => 'required|min:3',
+        'description' => 'required',
+        'published' => ''
 
-        $item = new Model( $validData );
-        $item->save();
-        return redirect( route('project.show', $project->id ) );
+
+    ]);
+
+    $publised = false;
+    if(isset($data['published'])){
+        $published = true;
     }
+
+    $project = new Project();
+    $project->titel = $data['titel'];
+    $project->description = $data['description'];
+
+    $project->save();
+
+    return redirect( route('project.show', $project->id ) );
+}
+
 
     /**
      * Display the specified resource.
@@ -64,9 +76,12 @@ class ProjectAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+  
+
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('project.index')->with('success', 'Project deleted successfully');
     }
 
     public function index()
@@ -75,4 +90,6 @@ class ProjectAdminController extends Controller
         return view('dashboard.projects.index', ['projects'=>$projects]);
 
     }
+
+
 }

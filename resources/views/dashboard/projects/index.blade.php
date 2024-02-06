@@ -25,13 +25,22 @@
             </nav>
         </header>
         <section>
+        <a href="{{ route('project.create') }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">maak</a>
+       
         @foreach($projects as $project)
                     <a href="{{ route('project.show', $project) }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">test</a>
                         @auth
                         <a href="{{ route('project.edit', $project) }}" class="bg-blue hover:bg-green text-white font-bold py-2 px-4 rounded">Bewerk</a>
+                        <form action="{{ route('project.destroy', $project) }}" method="POST" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red hover:bg-orange text-white font-bold py-2 px-4 rounded">Verwijder</button>
+            </form>
+
                         @endauth
                     @endforeach
         {{$projects->links()}}
+        
         </section>
         <footer>
             2023 copyright

@@ -16,6 +16,7 @@ class ProjectController extends Controller
         $model->description = $faker->text();
         $model->active = true;
         $model->save();
+        dump($model->titel);
     }
 
     public function show(Project $project): string
@@ -28,5 +29,6 @@ class ProjectController extends Controller
         $projects = Project::paginate(2);
         return view('project.index', ['projects'=>$projects]);
     }
+
 }
 

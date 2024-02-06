@@ -14,9 +14,9 @@
     </head>
     <body class="antialiased">
        <div>
-        <h2>{{$project->title}}</h2>
+        <h2>{{$project->titel}}</h2>
         ID: {{$project->id}}
-        <em>{{$project->intro}}</em>
+        <em>{{$project->description}}</em>
        </div>
     </body>
 </html>
